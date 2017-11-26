@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
+import com.oab.skyi.common.domain.DomainUtil;
+import com.oab.skyi.common.domain.ServerDomainFactoryImpl;
+
 /**
  * Created by zhiyong.bao on 2017/10/27.
  */
@@ -16,6 +19,7 @@ public class MyApplication extends Application implements StateListener{
     public void onCreate() {
         super.onCreate();
         mAppContext = getApplicationContext();
+        DomainUtil.initialize(mAppContext, null, new ServerDomainFactoryImpl());
 
     }
 
