@@ -30,5 +30,7 @@ void executeDds(obj, type, library, key) {
         obj.provided library
     } else if (type == 'implementation') {
         obj.implementation library
+    } else if (type == 'annotationProcessor') {
+        obj.annotationProcessor library
     }
 }
