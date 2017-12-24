@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 
 import com.oab.skyi.common.domain.DomainUtil;
 import com.oab.skyi.common.domain.ServerDomainFactoryImpl;
@@ -12,8 +14,14 @@ import com.oab.skyi.common.domain.ServerDomainFactoryImpl;
  * Created by zhiyong.bao on 2017/10/27.
  */
 
-public class MyApplication extends Application implements StateListener{
+public class MyApplication extends MultiDexApplication implements StateListener{
     private static Context mAppContext;
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
 
     @Override
     public void onCreate() {

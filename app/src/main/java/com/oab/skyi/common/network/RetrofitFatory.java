@@ -19,19 +19,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by bao on 2017/11/24.
  */
 
-public class ApiFactory {
-    private static volatile ApiFactory instance;
+public class RetrofitFatory {
+    private static volatile RetrofitFatory instance;
     private Map<ServerDomainType, Object> apis = new HashMap<>();
     private Interceptor[] interceptors;
     private Map<ServerDomainType, Interceptor[]> interceptorMap;
     private Factory converterFactory = GsonConverterFactory.create();
     private boolean enableLog = false;
 
-    public static ApiFactory getInstance() {
+    public static RetrofitFatory getInstance() {
         if(instance == null) {
-            synchronized(ApiFactory.class) {
+            synchronized(RetrofitFatory.class) {
                 if(instance == null) {
-                    instance = new ApiFactory();
+                    instance = new RetrofitFatory();
                 }
             }
         }
@@ -39,7 +39,7 @@ public class ApiFactory {
         return instance;
     }
 
-    protected ApiFactory() {
+    protected RetrofitFatory() {
     }
 
     public void clearCache() {
